@@ -159,19 +159,27 @@ for (const [name, type] of Object.entries({ chromium, firefox, webkit })) {
     await page.evaluate(() => window.gallery.setView('sphere'))
     assert.equal(await page.evaluate(() => window.gallery.getView()), 'grid')
     await page.emulateMedia({ reducedMotion: 'no-preference' })
+    await page.waitForFunction(() => !matchMedia('(prefers-reduced-motion: reduce)').matches)
     const frozen = await page.evaluate(async () => {
       const el = document.createElement('div')
       el.style.cssText = 'position:fixed;top:0;left:0;width:200px;height:150px;z-index:999'
       document.body.append(el)
       const mesh = window.demo.createMeshBackground(el, { seed: 42 })
-      await new Promise((r) => setTimeout(r, 80))
+      const waitForPhase = async (after) => {
+        const deadline = performance.now() + 5000
+        while (mesh.getPhase() <= after) {
+          if (performance.now() > deadline) throw new Error('Mesh did not advance its animation phase')
+          await new Promise((r) => setTimeout(r, 20))
+        }
+      }
+      await waitForPhase(0)
       mesh.setActive(false)
       const phase = mesh.getPhase(),
         image = el.querySelector('canvas').toDataURL()
       await new Promise((r) => setTimeout(r, 80))
       const same = phase === mesh.getPhase() && image === el.querySelector('canvas').toDataURL()
       mesh.setActive(true)
-      await new Promise((r) => setTimeout(r, 80))
+      await waitForPhase(phase)
       const continued = mesh.getPhase() > phase
       mesh.destroy()
       el.remove()
