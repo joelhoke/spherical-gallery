@@ -1,0 +1,5 @@
+export { createMeshBackground, createSeededMesh, resolvePalette, seededRandom } from './mesh.js'
+export type { MeshOptions } from './mesh.js'
+export { PALETTES } from './palettes.js'
+export type { Palette } from './palettes.js'
+export { registerMeshBackground } from './element.js'

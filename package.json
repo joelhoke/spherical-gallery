@@ -1,0 +1,32 @@
+{
+  "name": "spherical-gallery-workspace",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "dev": "node scripts/serve.mjs",
+    "pack:local": "npm run build && npm pack --workspace @joelhoke/spherical-gallery --pack-destination artifacts && npm pack --workspace @joelhoke/mesh-backgrounds --pack-destination artifacts",
+    "demo:build": "node scripts/build-demo.mjs",
+    "test:packed": "node scripts/verify-packed.mjs",
+    "format": "prettier --write packages/*/src scripts tests examples/*.tsx examples/*.js examples/*.css docs README.md",
+    "format:check": "prettier --check packages/*/src scripts tests examples/*.tsx examples/*.js examples/*.css docs README.md"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "esbuild": "^0.25.0",
+    "playwright": "1.62.1",
+    "prettier": "3.9.10",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.6.2"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

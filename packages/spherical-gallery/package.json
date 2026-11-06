@@ -1,0 +1,51 @@
+{
+  "name": "@joelhoke/spherical-gallery",
+  "version": "0.1.0",
+  "description": "Framework-independent spherical gallery",
+  "type": "module",
+  "license": "MIT",
+  "author": "Joel Hoke",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joelhoke/spherical-gallery.git",
+    "directory": "packages/spherical-gallery"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
+    },
+    "./browser": "./dist/browser.js",
+    "./styles.css": "./dist/styles.css"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">=18.2 <20",
+    "react-dom": ">=18.2 <20"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  }
+}

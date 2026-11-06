@@ -1,0 +1,1 @@
+The extracted runtime is original code by Joel Hoke. No third-party runtime code, portfolio media, logos, or font files are bundled. React and React DOM are optional external peer dependencies under their own MIT licenses.

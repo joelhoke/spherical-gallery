@@ -1,0 +1,27 @@
+mesh-background {
+  display: block;
+  min-height: 200px;
+}
+.mb-background {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.mb-background canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.mb-background[data-renderer='pixels'] canvas {
+  image-rendering: pixelated;
+}
+.mb-background[data-interactive='true'] {
+  touch-action: none;
+  cursor: crosshair;
+}
+.mb-background:focus-visible {
+  outline: 2px solid var(--mb-focus-color, #4acdff);
+  outline-offset: -4px;
+}

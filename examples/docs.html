@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Spherical Gallery · Documentation</title><link rel="stylesheet" href="./site.css"><style>article{max-width:850px;margin:auto;padding:48px 24px}h1{font-size:56px;letter-spacing:-.06em;line-height:1.1}h2{margin-top:56px;font-weight:500;font-size:32px}pre{background:#17252d;color:#e8edf0;padding:24px;border-radius:12px;overflow:auto;font-size:13px}a{color:#165e86}code{font-size:.9em}</style><header class="site-header"><a href="/">Spherical / 0.1</a><nav><a href="/">Plain HTML</a><a href="./react.html">React</a></nav></header><article><p class="eyebrow">Documentation</p><h1>Bring your own collection.</h1><p>Two independent packages, shared across JavaScript, Web Components, React, and Next.js. No content service, logo, or font is bundled.</p><h2>Install and enhance</h2><p>During review, install the packed .tgz artifacts. After publication:</p><pre>npm install @joelhoke/spherical-gallery
+npm install @joelhoke/mesh-backgrounds # optional</pre><pre>import { createGallery } from '@joelhoke/spherical-gallery'
+import '@joelhoke/spherical-gallery/styles.css'
+
+const gallery = createGallery(container, {
+  items: [{
+    id: 'orbit', title: 'Orbit', alt: 'A blue orbital sculpture',
+    poster: '/orbit.jpg',
+    destination: { kind: 'link', href: '/work/orbit' }
+  }],
+  title: 'Work', theme: 'system'
+})</pre><p>Keep real links in your original HTML as a no-JavaScript fallback. Call <code>registerSphericalGallery()</code> explicitly to use <code>&lt;spherical-gallery&gt;</code>; importing never registers global elements.</p><h2>React and Next.js</h2><pre>'use client'
+import { SphericalGallery } from '@joelhoke/spherical-gallery/react'
+import '@joelhoke/spherical-gallery/styles.css'
+
+export function Work({ items }) {
+  return &lt;SphericalGallery items={items} theme="system" /&gt;
+}</pre><p>The server sends a usable Grid, with each real item once. Enhancement follows hydration. Custom card, placeholder, toolbar, and preview slots remain in your React context.</p><h2>Styling and accessibility</h2><p>Set <code>--sg-height</code> for a container, or select viewport sizing. Use <code>--sg-background</code>, <code>--sg-color</code>, <code>--sg-font</code>, <code>--sg-display-font</code>, <code>--sg-border</code>, and <code>--sg-accent</code> for your brand.</p><p>Arrow keys explore, Home returns to start, and reduced motion keeps Grid. Previews contain focus and restore it on close. Active-only playback stops during motion, offscreen, or in hidden documents.</p><h2>Backgrounds alone</h2><pre>import { createMeshBackground } from '@joelhoke/mesh-backgrounds'
+const mesh = createMeshBackground(hero, {
+  seed: 104729, palette: 'twilight', renderer: 'ascii',
+  interactive: true
+})
+mesh.setActive(false) // pixels and phase stay intact
+mesh.destroy()</pre><h2>Preview windows and lifecycle</h2><p>Embedding is explicit and requires a configured origin. A visible ordinary link remains available if framing is blocked. The close/Escape bridge validates both the actual frame window and its configured origin. Password forms and authentication stay in your application.</p><p>Destroy imperative controllers when removing them. React and custom elements clean up on unmount/disconnect. Renderer handles must clean up their own resources.</p><p>Full reference: <a href="../docs/API.md">API</a> · <a href="../docs/STYLING.md">Styling</a> · <a href="../docs/EMBEDDING.md">Embedding</a> · <a href="../docs/EXTRACTION.md">Release process</a>.</p></article></html>
