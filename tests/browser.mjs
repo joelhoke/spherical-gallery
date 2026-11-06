@@ -160,6 +160,10 @@ for (const [name, type] of Object.entries({ chromium, firefox, webkit })) {
     assert.equal(await page.evaluate(() => window.gallery.getView()), 'grid')
     await page.emulateMedia({ reducedMotion: 'no-preference' })
     await page.waitForFunction(() => !matchMedia('(prefers-reduced-motion: reduce)').matches)
+    await page
+      .locator('spherical-gallery')
+      .getByRole('button', { name: 'Explore', exact: true })
+      .waitFor({ state: 'visible' })
     const frozen = await page.evaluate(async () => {
       const el = document.createElement('div')
       el.style.cssText = 'position:fixed;top:0;left:0;width:200px;height:150px;z-index:999'

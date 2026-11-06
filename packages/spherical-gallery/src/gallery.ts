@@ -151,10 +151,11 @@ export class GalleryController {
   private emit(name: string, detail: unknown) {
     this.element.dispatchEvent(new this.win.CustomEvent(name, { detail, bubbles: true }))
   }
-  private preferences = () => {
+  private preferences = (event: MediaQueryListEvent) => {
     this.updateTheme()
     this.motion.setReduced(this.reduced.matches)
     if (this.reduced.matches) this.setView('grid')
+    if (event.media === this.reduced.media || event.media === this.coarse.media) this.renderToolbar()
     this.refresh()
   }
   private visibility = () => {
