@@ -283,12 +283,20 @@ export class GalleryController {
       b.addEventListener('click', action)
       b.className = 'sg-viewSwitch'
       controls.append(b)
+      return b
     }
-    if (this.view === 'sphere')
-      button('Back to start ↺', 'Back to start', () => {
+    if (this.view === 'sphere') {
+      const reset = button('', 'Back to start', () => {
         this.reset()
         this.surface.focus({ preventScroll: true })
       })
+      reset.className = 'sg-resetView'
+      reset.title = 'Back to start'
+      const label = this.doc.createElement('span')
+      label.className = 'sg-resetLabel'
+      label.textContent = 'Back to start '
+      reset.append(label, this.doc.createTextNode('↺'))
+    }
     if (!this.reduced.matches)
       button(
         this.view === 'sphere' ? '▦ Grid view' : '◉ Explore',
