@@ -1,6 +1,8 @@
 # Spherical Gallery
 
-Two independently installable, MIT-licensed browser packages. Version **0.1.0**, prepared locally for review; public publication is a separate approved step.
+Two independently installable, MIT-licensed browser packages. Version **0.1.0**.
+
+![Spherical gallery filled with generated pixel and ASCII placeholders](docs/images/preview.png)
 
 - **`@joelhoke/spherical-gallery`**: continuous spherical exploration, a real-item Grid, themed media, controls, and optional preview windows.
 - **`@joelhoke/mesh-backgrounds`**: deterministic pixel/ASCII meshes, seven palettes, glyph bending, and ripples. No gallery dependency.
@@ -25,8 +27,6 @@ The demo contains plain HTML, a second independently themed gallery, standalone 
 
 ## Install
 
-After publication:
-
 ```sh
 npm install @joelhoke/spherical-gallery
 # Optional, independent background package:
@@ -34,7 +34,9 @@ npm install @joelhoke/mesh-backgrounds
 # React hosts also install their own react and react-dom.
 ```
 
-For prerelease review, substitute the two `.tgz` files produced in `artifacts/`.
+For local development, substitute the two `.tgz` files produced in `artifacts/`.
+
+The preview uses only generated placeholders, system fonts, and neutral styling. To regenerate it, start the demo server and run `node scripts/capture-preview.mjs`.
 
 ## Plain HTML and progressive enhancement
 

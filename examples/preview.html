@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spherical Gallery · Placeholder preview</title>
+  <link rel="stylesheet" href="../packages/spherical-gallery/dist/styles.css" />
+  <link rel="stylesheet" href="../packages/mesh-backgrounds/dist/styles.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #edf0ee;
+      color: #20322f;
+      font-family: system-ui, sans-serif;
+    }
+    header {
+      height: 126px;
+      padding: 28px 42px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 42px;
+      font-weight: 500;
+      letter-spacing: -0.055em;
+    }
+    p {
+      margin: 6px 0 0;
+      font-size: 14px;
+      color: #526760;
+    }
+    .version {
+      border: 1px solid #b8c9c0;
+      padding: 8px 14px;
+      border-radius: 24px;
+      font-size: 12px;
+    }
+    #gallery {
+      --sg-height: calc(100vh - 126px);
+      --sg-background: #edf0ee;
+      --sg-font: ui-monospace, monospace;
+      --sg-display-font: system-ui;
+    }
+  </style>
+  <header>
+    <div>
+      <h1>Spherical Gallery</h1>
+      <p>Continuous exploration. Seeded pixel and ASCII backgrounds.</p>
+    </div>
+    <span class="version">0.1.0 · MIT</span>
+  </header>
+  <main id="gallery" aria-label="Gallery of generated placeholders"></main>
+  <script type="module">
+    import { createGallery } from '../packages/spherical-gallery/dist/browser.js'
+    import { meshPlaceholder } from '../packages/mesh-backgrounds/dist/gallery.js'
+    const ascii = meshPlaceholder({ renderer: 'ascii', motion: false, interactive: false })
+    const pixels = meshPlaceholder({ renderer: 'pixels', motion: false, interactive: false })
+    window.previewGallery = createGallery(document.querySelector('#gallery'), {
+      items: [],
+      title: 'Sample collection',
+      theme: 'light',
+      renderPlaceholder: (context) => (context.artwork.palette % 2 ? ascii : pixels)(context),
+      placeholderLabel: ({ seed }) => ({
+        title: `Study ${String(seed).slice(-4)}`,
+        category: 'Generated placeholder',
+      }),
+      // This is an image composition, so it needs no interactive toolbar.
+      renderToolbar: () => document.createElement('span'),
+    })
+  </script>
+</html>
