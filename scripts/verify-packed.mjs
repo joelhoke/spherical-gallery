@@ -54,7 +54,8 @@ for (const name of ['spherical-gallery', 'mesh-backgrounds']) {
 }
 writeFileSync('test-results/packed-results.json', JSON.stringify(reports, null, 2))
 
-// A separate consumer installs the packed artifacts with React from the npm cache.
+// A separate consumer installs the packed artifacts with React. npm ci can cache
+// tarballs without caching registry metadata, so a fresh CI host may need npm.
 const reactVersion = JSON.parse(readFileSync('node_modules/react/package.json')).version
 const consumer = mkdtempSync(join(tmpdir(), 'spherical-react-install-'))
 writeFileSync(join(consumer, 'package.json'), '{"private":true,"type":"module"}')
@@ -68,7 +69,7 @@ execFileSync(
     resolve('artifacts/joelhoke-mesh-backgrounds-0.1.0.tgz'),
     `react@${reactVersion}`,
     `react-dom@${reactVersion}`,
-    '--offline',
+    '--prefer-offline',
     '--ignore-scripts',
     '--cache',
     npmCache,
