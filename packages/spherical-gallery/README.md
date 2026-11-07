@@ -2,7 +2,7 @@
 
 Framework-independent spherical gallery. MIT, copyright 2026 Joel Hoke.
 
-![Spherical gallery with generated placeholders](https://raw.githubusercontent.com/joelhoke/spherical-gallery/v0.1.0/docs/images/preview.png)
+![Spherical gallery with generated placeholders](https://raw.githubusercontent.com/joelhoke/spherical-gallery/main/docs/images/preview.png)
 
 ```sh
 npm install @joelhoke/spherical-gallery

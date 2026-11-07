@@ -2,7 +2,7 @@
 
 Framework-independent mesh backgrounds. MIT, copyright 2026 Joel Hoke.
 
-![Seeded pixel and ASCII meshes shown as gallery placeholders](https://raw.githubusercontent.com/joelhoke/spherical-gallery/v0.1.0/docs/images/preview.png)
+![Seeded pixel and ASCII meshes shown as gallery placeholders](https://raw.githubusercontent.com/joelhoke/spherical-gallery/main/docs/images/preview.png)
 
 ```sh
 npm install @joelhoke/mesh-backgrounds
