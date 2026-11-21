@@ -373,11 +373,6 @@ export class GalleryController {
     const title = this.doc.createElement('strong')
     title.textContent = item?.title ?? label?.title ?? 'Study'
     caption.append(category, title)
-    const arrow = this.doc.createElement('span')
-    arrow.className = 'sg-openArrow'
-    arrow.setAttribute('aria-hidden', 'true')
-    arrow.textContent = item && (item.destination.kind === 'link' || item.destination.embed) ? '↗' : '+'
-    caption.append(arrow)
     if (!this.options.renderCard || !item) trigger.append(caption)
     const activate = () => {
       if (!this.coarse.matches) {

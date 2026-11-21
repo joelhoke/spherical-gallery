@@ -205,20 +205,12 @@
   opacity: 0.85;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  padding-right: 1rem;
 }
 .sg-caption strong {
   font:
     500 clamp(0.8rem, 1.05vw, 1rem)/1.2 var(--sg-display-font, system-ui),
     sans-serif;
-  padding-right: 1.3rem;
   text-wrap: balance;
-}
-.sg-openArrow {
-  position: absolute;
-  right: 0.9rem;
-  bottom: 0.9rem;
-  font-size: 1rem;
 }
 .sg-grid {
   list-style: none;
